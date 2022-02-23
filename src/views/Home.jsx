@@ -1,9 +1,13 @@
 // Librairies
 import { useForm } from "react-hook-form";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
+import {FavoriteContext} from '../App';
 
 function Home() {
+const favoriteState = useContext(FavoriteContext);
+
   const {
     register,
     getValues,
@@ -19,15 +23,31 @@ function Home() {
     setCity(value);
   };
 
+  const getFavorite = () => {
+    if (favoriteState.stockedCity.length <= 3 || !favoriteState.stockedCity.includes(city)) {
+      favoriteState.stockedCity.push(city);
+    } else {
+     
+        return (
+          <p>You already saved 3 favorites city, please remove one before...</p>
+        );
+      
+    }
+    
+    console.log("FAVORITES", favoriteState.stockedCity)
+  }
+
+  
+
   useEffect(() => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=be2cb14537f6eac7f6325a3421aa70e0`
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log("RES", res.weather)
+
         setWeather([res]);
-        console.log("WEATHER", weather[0].weather[0].description)
+
       });
   }, [city]);
 
@@ -51,11 +71,19 @@ function Home() {
       <div>
         <ul>
           <li>{city}</li>
-          <li>{weather[0].weather[0].description}</li>
+          {weather.length === 0 ? (<p>Chargement...</p>) : (
+            <>
+            <li>{weather[0].weather[0].description}</li>
           <li>Humidity : {weather[0].main.humidity}%</li>
+            </>
+            
+          )}
+          
         </ul>
   
-        
+      <div>
+        <button onClick={getFavorite}>Add to favorites</button>
+      </div>
       </div>
     </>
   );
