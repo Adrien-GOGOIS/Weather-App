@@ -21,11 +21,11 @@ function Home() {
 
   useEffect(() => {
     fetch(
-      `api.openweathermap.org/data/2.5/weather?q=Paris&appid=be2cb14537f6eac7f6325a3421aa70e0`
+      `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=be2cb14537f6eac7f6325a3421aa70e0`
     )
       .then((res) => res.json())
       .then((res) => {
-        setStockage(res);
+        // setStockage(res);
         console.log("res", res);
       });
   }, [city]);
