@@ -12,7 +12,7 @@ function Home() {
   } = useForm();
 
   const [city, setCity] = useState("Paris");
-  const [stockage, setStockage] = useState([]);
+  const [weather, setWeather] = useState([]);
 
   const getCity = () => {
     const value = getValues("location");
@@ -21,12 +21,13 @@ function Home() {
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=be2cb14537f6eac7f6325a3421aa70e0`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=be2cb14537f6eac7f6325a3421aa70e0`
     )
       .then((res) => res.json())
       .then((res) => {
-        // setStockage(res);
-        console.log("res", res);
+        console.log("RES", res.weather)
+        setWeather([res]);
+        console.log("WEATHER", weather[0].weather[0].description)
       });
   }, [city]);
 
@@ -48,8 +49,13 @@ function Home() {
         </form>
       </div>
       <div>
-        <p>{city}</p>
-        <p>{stockage.weather}</p>
+        <ul>
+          <li>{city}</li>
+          <li>{weather[0].weather[0].description}</li>
+          <li>Humidity : {weather[0].main.humidity}%</li>
+        </ul>
+  
+        
       </div>
     </>
   );
