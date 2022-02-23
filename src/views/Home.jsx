@@ -26,14 +26,14 @@ const favoriteState = useContext(FavoriteContext);
   };
 
   const getFavorite = () => {
-    if (favoriteState.stockedCity.length <= 3 || !favoriteState.stockedCity.includes(city)) {
+    if (favoriteState.stockedCity.length < 3) {
       favoriteState.stockedCity.push(weather);
+      console.log("FAVORITES", favoriteState.stockedCity[0][0].name)
     } else {
-   
-      
+      console.log("ECHEC")
     }
     
-    console.log("FAVORITES", favoriteState.stockedCity)
+    
   }
 
 
