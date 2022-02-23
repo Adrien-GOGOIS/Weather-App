@@ -13,14 +13,22 @@ import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 // CONTEXT Favorites city :
 export const FavoriteContext = createContext({
   stockedCity: [],
+  city: "",
+  weather: [],
 });
 
 function App() {
   const [stockedCity, setStockedCity] = useState([]);
+  const [city, setCity] = useState("Paris");
+  const [weather, setWeather] = useState([]);
 
   const value = {
     stockedCity: stockedCity,
     setStockedCity: setStockedCity,
+    city: city,
+    setCity: setCity,
+    weather: weather,
+    setWeather: setWeather,
   };
 
   return (
