@@ -1,3 +1,5 @@
+import Cards from '../components/Cards.jsx';
+
 // Librairies
 import { useForm } from "react-hook-form";
 
@@ -27,17 +29,13 @@ const favoriteState = useContext(FavoriteContext);
     if (favoriteState.stockedCity.length <= 3 || !favoriteState.stockedCity.includes(city)) {
       favoriteState.stockedCity.push(city);
     } else {
-     
-        return (
-          <p>You already saved 3 favorites city, please remove one before...</p>
-        );
+   
       
     }
     
     console.log("FAVORITES", favoriteState.stockedCity)
   }
 
-  
 
   useEffect(() => {
     fetch(
@@ -68,23 +66,15 @@ const favoriteState = useContext(FavoriteContext);
           <button type="submit">Search</button>
         </form>
       </div>
-      <div>
-        <ul>
-          <li>{city}</li>
-          {weather.length === 0 ? (<p>Chargement...</p>) : (
-            <>
-            <li>{weather[0].weather[0].description}</li>
-          <li>Humidity : {weather[0].main.humidity}%</li>
-            </>
-            
-          )}
-          
-        </ul>
-  
+      <p>{city}</p>
+          {weather.length === 0 ? 
+          (<p>Chargement...</p>
+            ) : (
+      <Cards description={weather[0].weather[0].description} humidity={weather[0].main.humidity}/>)}
       <div>
         <button onClick={getFavorite}>Add to favorites</button>
       </div>
-      </div>
+      
     </>
   );
 }
