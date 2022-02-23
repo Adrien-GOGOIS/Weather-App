@@ -17,17 +17,37 @@ const favoriteState = useContext(FavoriteContext);
     formState: { errors },
   } = useForm();
 
+  const [city, setCity] = useState("Paris");
+  const [weather, setWeather] = useState([]);
+
   const getCity = () => {
     const value = getValues("location");
-    favoriteState.setCity(value);
+    setCity(value);
   };
 
   const getFavorite = () => {
-    if (favoriteState.stockedCity.length <= 3 || !favoriteState.stockedCity.includes(favoriteState.city)) {
-      favoriteState.stockedCity.push(favoriteState.weather);
-    } 
+    if (favoriteState.stockedCity.length <= 3 || !favoriteState.stockedCity.includes(city)) {
+      favoriteState.stockedCity.push(weather);
+    } else {
+   
+      
+    }
+    
+    console.log("FAVORITES", favoriteState.stockedCity)
   }
 
+
+  useEffect(() => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=be2cb14537f6eac7f6325a3421aa70e0`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+
+        setWeather([res]);
+
+      });
+  }, [city]);
 
   return (
     <>
@@ -46,10 +66,10 @@ const favoriteState = useContext(FavoriteContext);
           <button type="submit">Search</button>
         </form>
       </div>
-          {favoriteState.weather.length === 0 ? 
+          {weather.length === 0 ? 
           (<p>Chargement...</p>
             ) : (
-      <Cards cityName={favoriteState.weather[0].name} description={favoriteState.weather[0].weather[0].description} humidity={favoriteState.weather[0].main.humidity}/>)}
+      <Cards cityName={weather[0].name} description={weather[0].weather[0].description} humidity={weather[0].main.humidity}/>)}
       <div>
         <button onClick={getFavorite}>Add to favorites</button>
       </div>
