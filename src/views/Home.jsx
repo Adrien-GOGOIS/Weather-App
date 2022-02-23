@@ -27,7 +27,7 @@ const favoriteState = useContext(FavoriteContext);
 
   const getFavorite = () => {
     if (favoriteState.stockedCity.length <= 3 || !favoriteState.stockedCity.includes(city)) {
-      favoriteState.stockedCity.push(city);
+      favoriteState.stockedCity.push(weather);
     } else {
    
       
@@ -66,11 +66,10 @@ const favoriteState = useContext(FavoriteContext);
           <button type="submit">Search</button>
         </form>
       </div>
-      <p>{city}</p>
           {weather.length === 0 ? 
           (<p>Chargement...</p>
             ) : (
-      <Cards description={weather[0].weather[0].description} humidity={weather[0].main.humidity}/>)}
+      <Cards cityName={weather[0].name} description={weather[0].weather[0].description} humidity={weather[0].main.humidity}/>)}
       <div>
         <button onClick={getFavorite}>Add to favorites</button>
       </div>
