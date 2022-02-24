@@ -22,7 +22,7 @@ function Home() {
 
 // State
 const favoriteState = useContext(FavoriteContext);
-  const [city, setCity] = useState("Paris");
+  const [city, setCity] = useState(localStorage.getItem("savedCity"));
   const [weather, setWeather] = useState([]);
 
 // Constante React hook form
@@ -51,7 +51,8 @@ const favoriteState = useContext(FavoriteContext);
 
   // Requête API météo en ComponentDidUpdate :
   useEffect(() => {
-    fetch(
+    if (city !== undefined && city !== null) {
+      fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=be2cb14537f6eac7f6325a3421aa70e0`
     )
       .then((res) => res.json())
@@ -60,6 +61,8 @@ const favoriteState = useContext(FavoriteContext);
         setWeather([res]);
 
       });
+    }
+    
   }, [city]);
 
   // Background
@@ -77,6 +80,10 @@ const favoriteState = useContext(FavoriteContext);
     background = stormBg;
   }
   }
+
+  const getStorage = () => {
+    localStorage.setItem("savedCity", city);
+  }
   
 
   return (
@@ -89,8 +96,7 @@ const favoriteState = useContext(FavoriteContext);
             type="text"
             name="location"
             id="location"
-            placeholder="location"
-            //   value={localStorage.getItem("location")}
+            placeholder={localStorage.getItem("savedCity").toUpperCase()}
           />
           {errors.location && <span>Please enter a valid location</span>}
           <button type="submit">Search</button>
@@ -110,6 +116,7 @@ const favoriteState = useContext(FavoriteContext);
       temperature={weather[0].main.temp}
       humidity={weather[0].main.humidity}
       onClick={getFavorite}
+      onStorage={getStorage}
       children="+"
       title='Add to favorite'
       />)}

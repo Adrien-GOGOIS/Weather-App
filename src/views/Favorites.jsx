@@ -48,6 +48,10 @@ if (city[0].weather[0].main === 'Clouds') {
 }
 }
 
+const getStorage = () => {
+  localStorage.setItem("savedCity", city[0].name)
+}
+
     return (
       <ul>
       <li>
@@ -58,6 +62,7 @@ if (city[0].weather[0].main === 'Clouds') {
       temperature={city[0].main.temp}
       humidity={city[0].main.humidity} 
       onClick={() => removeFavorite(city)}
+      onStorage={getStorage}
       children="-"
       title='Remove favorite'
       image={background}

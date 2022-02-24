@@ -6,7 +6,7 @@ import Home from "./views/Home.jsx";
 import Favorites from "./views/Favorites";
 
 // React
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 // React router dom
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
