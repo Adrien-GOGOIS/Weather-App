@@ -81,6 +81,7 @@ const favoriteState = useContext(FavoriteContext);
       <Cards 
       cityName={weather[0].name} 
       description={weather[0].weather[0].description} 
+      image={`http://openweathermap.org/img/w/${weather[0].weather[0].icon}.png`}
       humidity={weather[0].main.humidity}
       onClick={getFavorite}
       children="Add favorite"

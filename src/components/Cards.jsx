@@ -6,6 +6,7 @@ export default function Cards(props) {
         <div className='cards'>
             <p>{props.cityName}</p>
             <p>{props.description}</p>
+            <img src={props.image} alt="" />
             <p>Humidity : {props.humidity}%</p>
             <button type="submit" className="favoriteButton" onClick={props.onClick}>{props.children}</button>
         </div>
