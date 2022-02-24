@@ -1,5 +1,7 @@
 import Cards from '../components/Cards.jsx';
 
+import '../styles/Home.css';
+
 // Librairies
 import { useForm } from "react-hook-form";
 
@@ -51,6 +53,13 @@ const favoriteState = useContext(FavoriteContext);
 
   return (
     <>
+    {/* <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script> */}
       <div>
         {/* Fonction soumission formulaire : */}
         <form onSubmit={handleSubmit(getCity)}>
@@ -71,11 +80,32 @@ const favoriteState = useContext(FavoriteContext);
             ) : (
       <Cards cityName={weather[0].name} description={weather[0].weather[0].description} humidity={weather[0].main.humidity}/>)}
       <div>
-        <button onClick={getFavorite}>Add to favorites</button>
+        <button type="submit" onClick={getFavorite}>Add to favorites</button>
       </div>
+      <div id="map" style={{height: '180px'}}>
+      </div>
+
       
     </>
+    
   );
+  
 }
+
+
+// {
+//   let map = L.map('map');
+
+//   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'mapbox/streets-v11',
+//     tileSize: 512,
+//     zoomOffset: -1,
+//     accessToken: 'your.mapbox.access.token'
+// }).addTo(map);
+
+// map.setView
+// }
 
 export default Home;

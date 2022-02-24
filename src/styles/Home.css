@@ -1,0 +1,152 @@
+body {
+  background: #0e101c;
+  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(79, 98, 148);
+}
+
+.form {
+  background: #0e101c;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input[type="password"],
+input[type="text"] {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+button[type="submit"],
+input[type="password"],
+input[type="text"] {
+  background: rgb(79, 98, 148);
+  color: white;
+  border: none;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 10px;
+}
+
+input[type="submit"]:hover {
+  background: white;
+  color: black;
+  transition: 1s all;
+  transform: translateY(4px);
+  border: 1px solid transparent;
+  opacity: 0.8;
+}
+
+input:disabled {
+  opacity: 0.4;
+}
+
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+button {
+  background: rgb(79, 98, 148);
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 10px;
+  background: rgb(79, 98, 148);
+  display: block;
+
+  margin-top: 40px;
+
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-align: center;
+  width: 100%;
+}
+
+button:hover {
+  background: rgb(21, 54, 138);
+  transition: 1s all;
+  transform: translateY(4px);
+  border: 1px solid transparent;
+  opacity: 0.8;
+}
+
+body {
+  margin: 0 20px;
+}
+
+ul.pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+
+  border: 1px solid white;
+  padding: 20px 0;
+}
+
+span {
+  color: red;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+input[type="checkbox"] {
+}
+
+label {
+  padding-left: 10px;
+}
+
+button:hover {
+  background: rgb(21, 54, 138);
+  transition: 1s all;
+  transform: translateY(4px);
+  border: 1px solid transparent;
+  opacity: 0.8;
+}
+
+div.cards {
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+p {
+  color: white;
+}

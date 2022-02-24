@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { FavoriteContext } from "../App";
 import Cards from "../components/Cards";
 
+import '../styles/Home.css';
+
 function Favorites() {
 const favoriteState = useContext(FavoriteContext);
 // console.log("CITY", favoriteState.stockedCity[0]);
@@ -9,7 +11,6 @@ const favoriteState = useContext(FavoriteContext);
 const removeFavorite = (name) => {
   const index = favoriteState.stockedCity.indexOf(name);
   if (index > -1 ) {favoriteState.stockedCity.splice(index, 1)}
-
 }
 
   return (
