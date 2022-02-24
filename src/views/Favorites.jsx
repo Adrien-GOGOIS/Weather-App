@@ -11,6 +11,8 @@ import rainyBg from "../background/rainy.gif"
 import sunnyBg from "../background/mostlySunny.gif"
 import snowBg from "../background/snow.gif"
 import stormBg from "../background/thunderstorm.gif"
+import cloudyBg from "../background/cloudy.gif"
+
 
 // RENDER
 function Favorites() {
@@ -33,9 +35,9 @@ const removeFavorite = (name) => {
 // Background
 let background;
 if (city.length !== 0) {
-  if (city[0].weather[0].main === 'Clouds' ||
-city[0].weather[0].main === 'Rain'
-) {
+if (city[0].weather[0].main === 'Clouds') {
+  background = cloudyBg;
+} else if (city[0].weather[0].main === 'Rain') {
   background = rainyBg;
 } else if (city[0].weather[0].main === 'Clear') {
   background = sunnyBg;

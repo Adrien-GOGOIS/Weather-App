@@ -7,7 +7,7 @@ import rainyBg from "../background/rainy.gif"
 import sunnyBg from "../background/mostlySunny.gif"
 import snowBg from "../background/snow.gif"
 import stormBg from "../background/thunderstorm.gif"
-
+import cloudyBg from "../background/cloudy.gif"
 
 // Librairies
 import { useForm } from "react-hook-form";
@@ -65,9 +65,9 @@ const favoriteState = useContext(FavoriteContext);
   // Background
   let background;
   if (weather.length !== 0) {
-    if (weather[0].weather[0].main === 'Clouds' ||
-  weather[0].weather[0].main === 'Rain'
-  ) {
+    if (weather[0].weather[0].main === 'Clouds') {
+    background = cloudyBg;
+  } else if (weather[0].weather[0].main === 'Rain') {
     background = rainyBg;
   } else if (weather[0].weather[0].main === 'Clear') {
     background = sunnyBg;
