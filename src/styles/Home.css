@@ -5,6 +5,23 @@ body {
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
+nav {
+  color: white;
+}
+
+li {
+  list-style: none;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+}
+
 form {
   max-width: 500px;
   margin: 0 auto;
@@ -84,10 +101,6 @@ button:hover {
   opacity: 0.8;
 }
 
-span {
-  color: red;
-}
-
 label {
   padding-left: 10px;
 }
@@ -107,13 +120,43 @@ div.cards {
   align-items: center;
   justify-content: center;
   margin: 20px;
+  position: relative;
 }
 
 p {
   color: white;
+  font-size: 20px;
 }
 
 button.favoriteButton {
-  width: 50%;
-  text-align: center;
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 5px;
+  right: 40px;
+  font-weight: bold;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
+
+p#cityName {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+span.descriptionTitle {
+  border-bottom: solid white 1px;
+  border-left: solid white 1px;
+
+  padding: 7px;
+  color: rgb(135, 159, 221);
+}
+
+span.actualWeather {
+  border-top: solid white 1px;
+  border-right: solid white 1px;
+  padding: 7px;
 }

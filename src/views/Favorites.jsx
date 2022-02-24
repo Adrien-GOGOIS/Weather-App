@@ -27,7 +27,7 @@ const removeFavorite = (name) => {
       temperature={city[0].main.temp}
       humidity={city[0].main.humidity} 
       onClick={() => removeFavorite(city)}
-      children="Remove favorite"
+      children="-"
       image={`http://openweathermap.org/img/w/${city[0].weather[0].icon}.png`}
       />
      

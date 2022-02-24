@@ -78,7 +78,7 @@ const favoriteState = useContext(FavoriteContext);
       temperature={weather[0].main.temp}
       humidity={weather[0].main.humidity}
       onClick={getFavorite}
-      children="Add favorite"
+      children="+"
       />)}
       
       <div id="map" style={{height: '180px'}}>
