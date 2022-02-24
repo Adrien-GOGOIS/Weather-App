@@ -1,6 +1,6 @@
 body {
   margin: 0 20px;
-  background: #0e101c;
+  background: #141625;
   font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
@@ -77,16 +77,10 @@ button {
   text-transform: uppercase;
   border: none;
   margin-top: 40px;
-  padding: 20px;
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 10px;
-  background: rgb(79, 98, 148);
   display: block;
-
-  margin-top: 40px;
-
-  text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 4px;
   text-align: center;
@@ -103,14 +97,6 @@ button:hover {
 
 label {
   padding-left: 10px;
-}
-
-button:hover {
-  background: rgb(21, 54, 138);
-  transition: 1s all;
-  transform: translateY(4px);
-  border: 1px solid transparent;
-  opacity: 0.8;
 }
 
 div.cards {
@@ -142,6 +128,7 @@ button.favoriteButton {
   font-weight: bold;
   font-size: 50px;
   padding-left: 30px;
+  background-color: rgb(238, 202, 83);
 }
 
 button.storageButton {
@@ -153,6 +140,7 @@ button.storageButton {
   font-weight: bold;
   font-size: 50px;
   padding-left: 30px;
+  background-color: rgba(206, 38, 38, 0.781);
 }
 
 img {
@@ -177,4 +165,17 @@ span.actualWeather {
   border-top: solid rgb(0, 0, 0, 0.2) 1px;
   border-right: solid rgb(0, 0, 0, 0.2) 1px;
   padding: 10px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.footer > p {
+  color: white;
+  font-size: 10px;
+  margin: 100px 5px;
 }

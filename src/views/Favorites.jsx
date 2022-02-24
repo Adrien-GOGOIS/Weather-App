@@ -1,9 +1,10 @@
 // Composant context react
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FavoriteContext } from "../App";
 
 // Component
 import Cards from "../components/Cards";
+import Footer from "../components/Footer";
 
 // CSS
 import '../styles/Home.css';
@@ -22,9 +23,12 @@ const favoriteState = useContext(FavoriteContext);
 // console.log("CITY", favoriteState.stockedCity[0]);
 
 // Fonction supression de favoris
+
 const removeFavorite = (name) => {
   const index = favoriteState.stockedCity.indexOf(name);
-  if (index > -1 ) {favoriteState.stockedCity.splice(index, 1)}
+  if (index > -1 ) {
+    favoriteState.stockedCity.splice(index, 1)
+  }
 }
 
   return (
@@ -73,7 +77,7 @@ const getStorage = () => {
     );
     
   })}
-
+<Footer />
   </>
   );
 }
