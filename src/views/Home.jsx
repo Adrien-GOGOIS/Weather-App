@@ -3,6 +3,11 @@ import Cards from '../components/Cards.jsx';
 
 // CSS
 import '../styles/Home.css';
+import rainyBg from "../background/rainy.gif"
+import sunnyBg from "../background/mostlySunny.gif"
+import snowBg from "../background/snow.gif"
+import stormBg from "../background/thunderstorm.gif"
+
 
 // Librairies
 import { useForm } from "react-hook-form";
@@ -42,8 +47,6 @@ const favoriteState = useContext(FavoriteContext);
     } else {
       console.log("ECHEC")
     }
-    
-    
   }
 
   // Requête API météo en ComponentDidUpdate :
@@ -58,6 +61,23 @@ const favoriteState = useContext(FavoriteContext);
 
       });
   }, [city]);
+
+  // Background
+  let background;
+  if (weather.length !== 0) {
+    if (weather[0].weather[0].main === 'Clouds' ||
+  weather[0].weather[0].main === 'Rain'
+  ) {
+    background = rainyBg;
+  } else if (weather[0].weather[0].main === 'Clear') {
+    background = sunnyBg;
+  } else if (weather[0].weather[0].main === 'Snow') {
+    background = snowBg;
+  } else if (weather[0].weather[0].main === 'Thunderstorm') {
+    background = stormBg;
+  }
+  }
+  
 
   return (
     <>
@@ -80,12 +100,13 @@ const favoriteState = useContext(FavoriteContext);
           {weather.length === 0 ? 
           (<p>Chargement...</p>
             ) : (
-              
+
       // Component Card
       <Cards 
+      image={background}
       cityName={city.toUpperCase()} 
       description={weather[0].weather[0].main} 
-      image={`http://openweathermap.org/img/w/${weather[0].weather[0].icon}.png`}
+      // image={`http://openweathermap.org/img/w/${weather[0].weather[0].icon}.png`}
       temperature={weather[0].main.temp}
       humidity={weather[0].main.humidity}
       onClick={getFavorite}

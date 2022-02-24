@@ -7,6 +7,10 @@ import Cards from "../components/Cards";
 
 // CSS
 import '../styles/Home.css';
+import rainyBg from "../background/rainy.gif"
+import sunnyBg from "../background/mostlySunny.gif"
+import snowBg from "../background/snow.gif"
+import stormBg from "../background/thunderstorm.gif"
 
 // RENDER
 function Favorites() {
@@ -25,6 +29,23 @@ const removeFavorite = (name) => {
   <>
   <h1>Favorites</h1>
   {favoriteState.stockedCity.map((city) => {
+
+// Background
+let background;
+if (city.length !== 0) {
+  if (city[0].weather[0].main === 'Clouds' ||
+city[0].weather[0].main === 'Rain'
+) {
+  background = rainyBg;
+} else if (city[0].weather[0].main === 'Clear') {
+  background = sunnyBg;
+} else if (city[0].weather[0].main === 'Snow') {
+  background = snowBg;
+} else if (city[0].weather[0].main === 'Thunderstorm') {
+  background = stormBg;
+}
+}
+
     return (
       <ul>
       <li>
@@ -37,7 +58,7 @@ const removeFavorite = (name) => {
       onClick={() => removeFavorite(city)}
       children="-"
       title='Remove favorite'
-      image={`http://openweathermap.org/img/w/${city[0].weather[0].icon}.png`}
+      image={background}
       />
      
       </li>
