@@ -50,6 +50,28 @@ const favoriteState = useContext(FavoriteContext);
     }
   }
 
+  useEffect(() => {
+    if (localStorage.getItem("savedCity") === null) {
+      navigator.geolocation.getCurrentPosition((position) => {
+    console.log(`latitude : ${position.coords.latitude} / longitude : ${position.coords.longitude}`);
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=be2cb14537f6eac7f6325a3421aa70e0`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+
+        setWeather([res]);
+        setCity(res.name);
+
+      });
+  }, (error) => {
+    console.error(error);
+  });
+    }
+    
+  }, [])
+  
+
   // Requête API météo en ComponentDidUpdate :
   useEffect(() => {
     if (city !== undefined && city !== null) {
@@ -97,7 +119,7 @@ const favoriteState = useContext(FavoriteContext);
             type="text"
             name="location"
             id="location"
-            placeholder={localStorage.getItem("savedCity").toUpperCase()}
+            placeholder="Enter a city"
           />
           {errors.location && <span>Please enter a valid location</span>}
           <button type="submit">Search</button>
@@ -111,7 +133,7 @@ const favoriteState = useContext(FavoriteContext);
       // Component Card
       <Cards 
       image={background}
-      cityName={city.toUpperCase()} 
+      cityName={city} 
       description={weather[0].weather[0].main} 
       // image={`http://openweathermap.org/img/w/${weather[0].weather[0].icon}.png`}
       temperature={weather[0].main.temp}
