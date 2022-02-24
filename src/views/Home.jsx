@@ -34,11 +34,6 @@ const favoriteState = useContext(FavoriteContext);
     formState: { errors },
   } = useForm();
 
-  // Fonction récupération ville input utilisateur :
-  const getCity = () => {
-    const value = getValues("location");
-    setCity(value);
-  };
 
   // Fonction ajout ville aux favoris :
   const getFavorite = () => {
@@ -55,7 +50,7 @@ const favoriteState = useContext(FavoriteContext);
       navigator.geolocation.getCurrentPosition((position) => {
     console.log(`latitude : ${position.coords.latitude} / longitude : ${position.coords.longitude}`);
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=be2cb14537f6eac7f6325a3421aa70e0`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=1e16d4d808acf38429a267a69416f852`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -70,19 +65,26 @@ const favoriteState = useContext(FavoriteContext);
     }
     
   }, [])
+
+
+  // Fonction récupération ville input utilisateur :
+  const getCity = () => {
+    const value = getValues("location");
+    setCity(value);
+  };
   
 
   // Requête API météo en ComponentDidUpdate :
   useEffect(() => {
+
     if (city !== undefined && city !== null) {
       fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=be2cb14537f6eac7f6325a3421aa70e0`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=1e16d4d808acf38429a267a69416f852`
     )
       .then((res) => res.json())
       .then((res) => {
 
         setWeather([res]);
-
       });
     }
     
@@ -108,6 +110,10 @@ const favoriteState = useContext(FavoriteContext);
     localStorage.setItem("savedCity", city);
   }
   
+  const deleteStorage = () => {
+    console.log("DELETE")
+    localStorage.clear();
+  }
 
   return (
     <>
@@ -140,6 +146,7 @@ const favoriteState = useContext(FavoriteContext);
       humidity={weather[0].main.humidity}
       onClick={getFavorite}
       onStorage={getStorage}
+      onDeleteStorage={deleteStorage}
       children="+"
       title='Add to favorite'
       />)}

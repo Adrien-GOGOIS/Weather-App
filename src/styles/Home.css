@@ -118,7 +118,6 @@ div.cards {
   margin: 40px 30px;
   position: relative;
   padding-bottom: 30px;
-  /* background-image: url("/public/rainy.gif"); */
 }
 
 p {
@@ -151,6 +150,18 @@ button.storageButton {
   background-color: rgba(206, 38, 38, 0.781);
 }
 
+button.deleteButton {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 270px;
+  right: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: rgb(218, 8, 8);
+  border-radius: 50%;
+}
+
 img {
   height: 100px;
   width: 100px;
@@ -173,6 +184,10 @@ span.actualWeather {
   border-top: solid rgb(0, 0, 0, 0.2) 1px;
   border-right: solid rgb(0, 0, 0, 0.2) 1px;
   padding: 10px;
+}
+
+span.redX {
+  position: absolute;
 }
 
 .footer {

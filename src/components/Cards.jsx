@@ -16,6 +16,7 @@ export default function Cards(props) {
             <p><span className='descriptionTitle'>Humidity</span> : <span className='actualWeather'>{props.humidity}%</span></p>
             <button title={props.title} type="submit" className="favoriteButton" onClick={props.onClick}><span>{props.children}</span></button>
             <button title="Save city" type="submit" className="storageButton" onClick={props.onStorage}><span>&hearts;</span></button>
+            <button title="Delete saved city" type="submit" className="deleteButton" onClick={props.onDeleteStorage}><span className='redX'></span></button>
         </div>
     ); 
 }

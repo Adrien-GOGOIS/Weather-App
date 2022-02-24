@@ -56,6 +56,10 @@ const getStorage = () => {
   localStorage.setItem("savedCity", city[0].name)
 }
 
+const deleteStorage = () => {
+  localStorage.clear();
+}
+
     return (
       <ul>
       <li>
@@ -67,6 +71,7 @@ const getStorage = () => {
       humidity={city[0].main.humidity} 
       onClick={() => removeFavorite(city)}
       onStorage={getStorage}
+      onDeleteStorage={deleteStorage}
       children="-"
       title='Remove favorite'
       image={background}
