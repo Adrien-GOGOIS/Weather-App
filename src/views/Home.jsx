@@ -41,7 +41,7 @@ const favoriteState = useContext(FavoriteContext);
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=be2cb14537f6eac7f6325a3421aa70e0`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=be2cb14537f6eac7f6325a3421aa70e0`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -53,13 +53,6 @@ const favoriteState = useContext(FavoriteContext);
 
   return (
     <>
-    {/* <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
-   
- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
- integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
- crossorigin=""></script> */}
       <div>
         {/* Fonction soumission formulaire : */}
         <form onSubmit={handleSubmit(getCity)}>
@@ -80,8 +73,9 @@ const favoriteState = useContext(FavoriteContext);
             ) : (
       <Cards 
       cityName={weather[0].name} 
-      description={weather[0].weather[0].description} 
+      description={weather[0].weather[0].main} 
       image={`http://openweathermap.org/img/w/${weather[0].weather[0].icon}.png`}
+      temperature={weather[0].main.temp}
       humidity={weather[0].main.humidity}
       onClick={getFavorite}
       children="Add favorite"

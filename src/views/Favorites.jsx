@@ -23,10 +23,12 @@ const removeFavorite = (name) => {
 
       <Cards key={city[0].description} 
       cityName={city[0].name} 
-      description={city[0].weather[0].description} 
+      description={city[0].weather[0].main} 
+      temperature={city[0].main.temp}
       humidity={city[0].main.humidity} 
       onClick={() => removeFavorite(city)}
       children="Remove favorite"
+      image={`http://openweathermap.org/img/w/${city[0].weather[0].icon}.png`}
       />
      
       </li>
