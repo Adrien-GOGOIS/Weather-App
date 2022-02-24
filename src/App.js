@@ -1,3 +1,4 @@
+// CSS
 import "./App.css";
 
 // Views
@@ -16,8 +17,10 @@ export const FavoriteContext = createContext({
 });
 
 function App() {
+  // STATE App.js
   const [stockedCity, setStockedCity] = useState([]);
 
+  // Passage des valeurs pour context
   const value = {
     stockedCity: stockedCity,
     setStockedCity: setStockedCity,
