@@ -78,10 +78,14 @@ const favoriteState = useContext(FavoriteContext);
           {weather.length === 0 ? 
           (<p>Chargement...</p>
             ) : (
-      <Cards cityName={weather[0].name} description={weather[0].weather[0].description} humidity={weather[0].main.humidity}/>)}
-      <div>
-        <button type="submit" onClick={getFavorite}>Add to favorites</button>
-      </div>
+      <Cards 
+      cityName={weather[0].name} 
+      description={weather[0].weather[0].description} 
+      humidity={weather[0].main.humidity}
+      onClick={getFavorite}
+      children="Add favorite"
+      />)}
+      
       <div id="map" style={{height: '180px'}}>
       </div>
 

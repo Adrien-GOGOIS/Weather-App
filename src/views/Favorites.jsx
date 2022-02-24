@@ -21,8 +21,14 @@ const removeFavorite = (name) => {
       <ul>
       <li>
 
-      <Cards key={city[0].description} cityName={city[0].name} description={city[0].weather[0].description} humidity={city[0].main.humidity}/>
-      <button onClick={() => removeFavorite(city)}>Remove favorite</button>
+      <Cards key={city[0].description} 
+      cityName={city[0].name} 
+      description={city[0].weather[0].description} 
+      humidity={city[0].main.humidity} 
+      onClick={() => removeFavorite(city)}
+      children="Remove favorite"
+      />
+     
       </li>
     </ul>
     );

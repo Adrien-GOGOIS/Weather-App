@@ -7,6 +7,7 @@ export default function Cards(props) {
             <p>{props.cityName}</p>
             <p>{props.description}</p>
             <p>Humidity : {props.humidity}%</p>
+            <button type="submit" className="favoriteButton" onClick={props.onClick}>{props.children}</button>
         </div>
     ); 
 }
