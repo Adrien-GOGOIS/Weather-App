@@ -39,7 +39,7 @@ const removeFavorite = (name) => {
 // Background
 let background;
 if (city.length !== 0) {
-if (city[0].weather[0].main === 'Clouds') {
+if (city[0].weather[0].main === 'Clouds' || city[0].weather[0].main === 'Haze') {
   background = cloudyBg;
 } else if (city[0].weather[0].main === 'Rain') {
   background = rainyBg;

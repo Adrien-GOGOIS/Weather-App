@@ -93,7 +93,7 @@ const favoriteState = useContext(FavoriteContext);
   // Background
   let background;
   if (weather.length !== 0) {
-    if (weather[0].weather[0].main === 'Clouds') {
+    if (weather[0].weather[0].main === 'Clouds' || weather[0].weather[0].main === 'Haze') {
     background = cloudyBg;
   } else if (weather[0].weather[0].main === 'Rain') {
     background = rainyBg;
@@ -133,13 +133,13 @@ const favoriteState = useContext(FavoriteContext);
       </div>
       {/* GUARD Error */}
           {weather.length === 0 ? 
-          (<p>Chargement...</p>
+          (<p></p>
             ) : (
 
       // Component Card
       <Cards 
       image={background}
-      cityName={city} 
+      cityName={city.toUpperCase()} 
       description={weather[0].weather[0].main} 
       // image={`http://openweathermap.org/img/w/${weather[0].weather[0].icon}.png`}
       temperature={weather[0].main.temp}
