@@ -7,6 +7,7 @@ body {
 
 nav {
   color: white;
+  margin-top: 10px;
 }
 
 li {
@@ -16,10 +17,18 @@ li {
 
 a {
   text-decoration: none;
+  padding: 10px;
 }
 
 a:visited {
   color: white;
+}
+
+a:hover {
+  transition: 2s all;
+  transform: translateY(4px);
+  border: 1px solid transparent;
+  opacity: 0.8;
 }
 
 form {
@@ -172,6 +181,9 @@ span.actualWeather {
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
 }
 
 .footer > p {
